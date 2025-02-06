@@ -1,4 +1,0 @@
-program highball
-
-begin
-end.
