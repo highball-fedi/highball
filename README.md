@@ -3,3 +3,5 @@
 
 **Highball** is an open-source ActivityPub server
 </div>
+
+---
