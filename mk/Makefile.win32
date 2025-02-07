@@ -1,0 +1,6 @@
+# Windows 32-bit
+
+FPARGS=-Pi386 -Twin32
+EXEC=.exe
+
+include ./Makefile

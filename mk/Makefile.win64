@@ -1,0 +1,6 @@
+# Windows 64-bit
+
+FPARGS=-Px86_64 -Twin64
+EXEC=.exe
+
+include ./Makefile
