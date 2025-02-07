@@ -15,8 +15,16 @@ begin
 	end;
 end;
 
+var
+	ResultParseArgs : Integer;
 begin
 	WriteLn('Highball - ActivityPub server in Pascal, version ' + HighballGetVersion());
 	WriteLn('Copyright (c) 2025 Nishi & Contributors');
-	ParseArgs;
+	ResultParseArgs := ParseArgs;
+	if not (ResultParseArgs = -1) then
+	begin
+		Halt(ResultParseArgs);
+	end;
+	WriteLn('');
+	WriteLn('Starting server');
 end.
