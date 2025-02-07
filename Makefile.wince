@@ -1,0 +1,5 @@
+# Windows CE (ARM)
+
+FPARGS="-Parm -Twince"
+
+include ./Makefile
