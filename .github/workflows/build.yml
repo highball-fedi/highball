@@ -24,7 +24,9 @@ jobs:
     - name: Install packages
       run: sudo apt-get install fpc
     - name: Compile
-      run: make EXEC=-linux64
+      run: make
+    - name: Move file
+      run: mv build/highball build/highball-linux64
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
