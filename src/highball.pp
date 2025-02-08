@@ -12,6 +12,15 @@ begin
 	ParseArgs := -1;
 	for ArgI := 1 to ParamCount do
 	begin
+		if HighballIsArg(ParamStr(ArgI), 'V', 'version') then
+		begin
+			ParseArgs := 0;
+		end
+		else
+		begin
+			WriteLn('Invalid argument');
+			ParseArgs := 1;
+		end;
 	end;
 end;
 
