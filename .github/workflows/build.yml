@@ -1,0 +1,57 @@
+# $Id$
+
+name: "Build Highball"
+
+on:
+  workflow_dispatch:
+  push:
+
+concurrency:
+  group: "build"
+  cancel-in-progress: true
+
+jobs:
+  build-lin64:
+    name: "Build for Linux 64-bit"
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install packages
+      run: sudo apt-get install fpc
+    - name: Compile
+      run: make EXEC=-linux64
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-lin64
+        path: build/highball-linux64
+
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    needs: [build-lin64]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Download from build-lin64
+      uses: actions/download-artifact@v4
+      with:
+        name: build-lin64
+    - name: Delete old release
+      run: gh release delete "$(make get-version)" --cleanup-tag -y || true
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Release
+      run: gh release create -t "v$(make get-version)" "$(make get-version)"  highball-linux64 -n "Version \`$(make get-version)\` was build in this release"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
