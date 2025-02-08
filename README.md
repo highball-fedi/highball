@@ -5,3 +5,9 @@
 </div>
 
 ---
+
+## Requirements
+
+ - Pascal compiler (currently only Free Pascal)
+
+TODO: write README
