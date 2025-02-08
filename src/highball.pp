@@ -37,4 +37,5 @@ begin
 	end;
 	WriteLn('');
 	WriteLn('Starting server');
+	Halt(HighballServerStart());
 end.
