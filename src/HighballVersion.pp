@@ -11,7 +11,7 @@ type
 const
 	HighballVersionRaw : THighballVersion = (
 		(* DO NOT REMOVE COMMENTS!! - THEY ARE USED INTERNALLY *)
-		Major : 1; (* MAJOR *)
+		Major : 0; (* MAJOR *)
 		Minor : 0; (* MINOR *)
 		Patch : 0; (* PATCH *)
 	);
