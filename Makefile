@@ -1,6 +1,6 @@
 # Just some script to compile stuffs easier
 
-.PHONY: all ./build
+.PHONY: all get-version ./build
 
 all: ./build
 
@@ -15,6 +15,9 @@ all: ./build
 	echo "	fpc $(FPARGS) -FE. ../src/highball.pp"	>> $@
 	echo "clean:"					>> $@
 	echo "	-rm -f *"				>> $@
+
+get-version:
+	echo `grep '(\* MAJOR \*)' src/HighballVersion.pp | sed 's/.*Major : //g' | sed 's/;.*//g'`.`grep '(\* MINOR \*)' src/HighballVersion.pp | sed 's/.*Minor : //g' | sed 's/;.*//g'`.`grep '(\* PATCH \*)' src/HighballVersion.pp | sed 's/.*Patch : //g' | sed 's/;.*//g'`
 
 clean: ./build/Makefile
 	$(MAKE) -C ./build clean

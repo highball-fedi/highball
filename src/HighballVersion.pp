@@ -10,9 +10,10 @@ type
 
 const
 	HighballVersionRaw : THighballVersion = (
-		Major : 1;
-		Minor : 0;
-		Patch : 0;
+		(* DO NOT REMOVE COMMENTS!! - THEY ARE USED INTERNALLY *)
+		Major : 1; (* MAJOR *)
+		Minor : 0; (* MINOR *)
+		Patch : 0; (* PATCH *)
 	);
 
 function HighballGetVersion() : String;
