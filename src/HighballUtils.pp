@@ -1,8 +1,8 @@
 unit HighballUtils;
 
 interface
-function HighballIsArg(Argument: String; ExpShort: String; ExpLong: String) : Boolean;
-function HighballHasArgPrefix(Argument: String) : Boolean;
+function HighballIsArg(Argument : String; ExpShort : String; ExpLong : String) : Boolean;
+function HighballHasArgPrefix(Argument : String) : Boolean;
 
 implementation
 function HighballIsArg(Argument: String; ExpShort: String; ExpLong: String) : Boolean;

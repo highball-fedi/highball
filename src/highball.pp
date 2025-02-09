@@ -3,8 +3,7 @@ program highball;
 uses
 	HighballVersion,
 	HighballUtils,
-	HighballServer,
-	Sysutils;
+	HighballServer;
 
 function ParseArgs : Integer;
 var
