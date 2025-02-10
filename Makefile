@@ -1,6 +1,10 @@
 # Just some script to compile stuffs easier
 
-PC=fpc
+PASC ?= fpc
+
+CC ?= cc
+CFLAGS ?=
+LDFLAGS ?=
 
 .PHONY: all get-version ./build
 
@@ -13,7 +17,7 @@ all: ./build
 	mkdir -p ./build
 	echo ".PHONY: all clean" > $@
 	echo "all: ./highball$(EXEC)" >> $@
-	CC="$(CC)" PC="$(PC)" FPARGS="$(FPARGS)" EXEC="$(EXEC)" ./compgen >> $@
+	CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" PC="$(PASC)" FPARGS="$(FPARGS)" EXEC="$(EXEC)" ./compgen >> $@
 	echo "clean:" >> $@
 	echo "	-rm -f *" >> $@
 
