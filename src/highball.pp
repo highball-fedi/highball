@@ -1,6 +1,10 @@
 program highball;
 
 uses
+	{$ifdef UNIX}
+	cthreads,
+	cmem,
+	{$endif}
 	HighballVersion,
 	HighballUtils,
 	HighballServer;

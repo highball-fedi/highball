@@ -3,6 +3,7 @@ if [ "$PC" = "fpc" ]; then
 	echo "./highball$EXEC: ../src/*.pp"
 	echo "	fpc $FPARGS -FE. ../src/highball.pp"
 elif [ "$PC" = "p2c" ]; then
+	echo "WARN: Not supported"
 	CFILES="Sysutils.c `cd src && ls -d *.pp | tr '\\r\\n' '  ' | sed 's/\.pp/.c/g'`"
 	OBJS="`echo $CFILES | sed 's/\.c/.o/g'`"
 	for OUT in $CFILES; do
