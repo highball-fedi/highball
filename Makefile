@@ -9,14 +9,11 @@ all: ./build
 ./build: ./build/Makefile
 	$(MAKE) -C ./build
 
-./build/Makefile: Makefile
+./build/Makefile: Makefile compgen
 	mkdir -p ./build
 	echo ".PHONY: all clean" > $@
 	echo "all: ./highball$(EXEC)" >> $@
-	if [ "$(PC)" = "fpc" ]; then \
-		echo "./highball$(EXEC): ../src/*.pp" >> $@ ; \
-		echo "	fpc $(FPARGS) -FE. ../src/highball.pp" >> $@ ; \
-	fi
+	CC="$(CC)" PC="$(PC)" FPARGS="$(FPARGS)" EXEC="$(EXEC)" ./compgen >> $@
 	echo "clean:" >> $@
 	echo "	-rm -f *" >> $@
 
