@@ -1,10 +1,11 @@
 #!/bin/sh
+SOURCE=`ls -d ./src/*.pp`
 if [ "$PC" = "fpc" ]; then
-	echo "./highball$EXEC: ../src/*.pp"
+	echo "./highball$EXEC: `echo $SOURCE | sed 's/\.\/src\//\.\.\/src\//g'`"
 	echo "	fpc $FPARGS -FE. ../src/highball.pp"
 elif [ "$PC" = "p2c" ]; then
 	echo "WARN: Not supported"
-	CFILES="Sysutils.c `cd src && ls -d *.pp | tr '\\r\\n' '  ' | sed 's/\.pp/.c/g'`"
+	CFILES="Sysutils.c `echo $SOURCE | sed 's/\.\/src\///g' | tr '\\r\\n' '  ' | sed 's/\.pp/.c/g'`"
 	OBJS="`echo $CFILES | sed 's/\.c/.o/g'`"
 	for OUT in $CFILES; do
 		IN=../src/`echo $OUT | sed 's/\.c/.pp/g'`

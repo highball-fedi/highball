@@ -7,7 +7,8 @@ uses
 	{$endif}
 	HighballVersion,
 	HighballUtils,
-	HighballServer;
+	HighballServer,
+	HighballConfig;
 
 function ParseArgs : Integer;
 var
