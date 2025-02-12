@@ -8,7 +8,8 @@ uses
 	HighballVersion,
 	HighballUtils,
 	HighballServer,
-	HighballConfig;
+	HighballConfig,
+	HighballDatabase;
 
 function ParseArgs : Integer;
 var
@@ -40,6 +41,8 @@ begin
 		Halt(ResultParseArgs);
 	end;
 	WriteLn('');
+	WriteLn('Parsing config');
+	HighballParseConfig('config.ini');
 	WriteLn('Starting server');
 	Halt(HighballServerStart());
 end.
