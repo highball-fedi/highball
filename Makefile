@@ -2,22 +2,30 @@
 
 PASC ?= fpc
 
+DESTDIR ?=
+PREFIX ?= /usr/local
+
 CC ?= cc
 CFLAGS ?=
 LDFLAGS ?=
 
-.PHONY: all get-version ./build
+.PHONY: all install get-version ./build
 
 all: ./build
+
+install: all
+	$(MAKE) -C ./build install
 
 ./build: ./build/Makefile
 	$(MAKE) -C ./build
 
 ./build/Makefile: Makefile compgen
 	mkdir -p ./build
-	echo ".PHONY: all clean" > $@
+	echo ".PHONY: all install clean" > $@
 	echo "all: ./highball$(EXEC)" >> $@
 	CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" PC="$(PASC)" FPARGS="$(FPARGS)" EXEC="$(EXEC)" ./compgen >> $@
+	echo "install: all" >> $@
+	echo "	cp ./highball$(EXEC) $(DESTDIR)$(PREFIX)/bin/" >> $@
 	echo "clean:" >> $@
 	echo "	-rm -f *" >> $@
 
