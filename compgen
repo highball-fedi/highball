@@ -2,26 +2,5 @@
 SOURCE=`ls -d ./src/*.pp`
 if [ "$PC" = "fpc" ]; then
 	echo "./highball$EXEC: `echo $SOURCE | sed 's/\.\/src\//\.\.\/src\//g'`"
-	echo "	fpc $FPARGS -FE. ../src/highball.pp"
-elif [ "$PC" = "p2c" ]; then
-	echo "WARN: Not supported"
-	CFILES="Sysutils.c `echo $SOURCE | sed 's/\.\/src\///g' | tr '\\r\\n' '  ' | sed 's/\.pp/.c/g'`"
-	OBJS="`echo $CFILES | sed 's/\.c/.o/g'`"
-	for OUT in $CFILES; do
-		IN=../src/`echo $OUT | sed 's/\.c/.pp/g'`
-		cd src
-		if [ ! -f $IN ]; then
-			IN=../compat/`echo $OUT | sed 's/\.c/.pp/g'`
-		fi
-		cd ..
-		echo "$OUT: $IN"
-		echo "	p2c -LTurbo -I../src/%s.pp -I../compat/%s.pp -o $OUT -a $IN"
-	done
-	for OUT in $OBJS; do
-		IN=`echo $OUT | sed 's/\.o/.c/g'`
-		echo "$OUT: $CFILES"
-		echo "	$CC $CFLAGS -c -o $OUT $IN"
-	done
-	echo "./highball$EXEC: $OBJS"
-	echo "	$CC $LDFLAGS -o ./highball$EXEC $OBJS -lp2c"
+	echo "	fpc -Mobjfpc -Sh $FPARGS -FE. ../src/highball.pp"
 fi

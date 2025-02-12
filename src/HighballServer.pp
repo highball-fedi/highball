@@ -7,13 +7,15 @@ implementation
 uses
 	fphttpapp,
 	httpdefs,
-	httproute;
+	httproute,
+	HighballConfig,
+	Sysutils;
 
 function HighballServerStart : Integer;
 begin
 	HighballServerStart := 0;
 	WriteLn('Started server');
-	Application.Port := 1999;
+	Application.Port := HighballParsedConfig.ServerPort;
 	Application.Threaded := True;
 	Application.Initialize;
 	Application.Run;
