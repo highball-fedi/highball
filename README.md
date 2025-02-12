@@ -9,5 +9,6 @@
 ## Requirements
 
  - Pascal compiler (currently only Free Pascal)
+ - PostgreSQL
 
 TODO: write README
