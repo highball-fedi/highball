@@ -8,11 +8,14 @@
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-coffee.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-energy-drinks.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-black-magic.svg)](https://forthebadge.com) 
 </div>
 
-## Requirements
+## Build requirements
 
  - Pascal compiler (currently only Free Pascal)
- - PostgreSQL
- - POSIX environment (recommended, but might work on Windows)
+ - POSIX environment (should work on Cygwin/MSYS2 too)
+
+## Runtime requirements
+
+ - PostgreSQL (needed when building too)
 
 ## Building and installation
 
