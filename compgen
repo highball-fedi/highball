@@ -1,6 +1,4 @@
 #!/bin/sh
 SOURCE=`ls -d ./src/*.pp`
-if [ "$PC" = "fpc" ]; then
-	echo "./highball$EXEC: `echo $SOURCE | sed 's/\.\/src\//\.\.\/src\//g'`"
-	echo "	fpc -Mobjfpc -Sh $FPARGS -FE. ../src/highball.pp"
-fi
+echo "./highball$EXEC: `echo $SOURCE | sed 's/\.\/src\//\.\.\/src\//g'`"
+echo "	$PC -Fl../lib -Mobjfpc -Sh $FPARGS -FE. ../src/highball.pp"
