@@ -10,12 +10,12 @@
 
 ## Build requirements
 
- - Pascal compiler (currently only Free Pascal)
- - POSIX environment (should work on Cygwin/MSYS2 too)
+ - Pascal compiler (currently only [Free Pascal](https://www.freepascal.org/))
+ - POSIX environment (should work on [Cygwin](https://www.cygwin.com/)/[MSYS2](https://www.msys2.org/) too)
 
 ## Runtime requirements
 
- - PostgreSQL (needed when building too)
+ - [PostgreSQL](https://www.postgresql.org/) (needed when building too)
 
 ## Building and installation
 
