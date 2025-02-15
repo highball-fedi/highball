@@ -1,6 +1,0 @@
-# Windows CE (ARM)
-
-FPARGS=-Parm -Twince
-EXEC=.exe
-
-include ./Makefile
