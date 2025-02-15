@@ -1,0 +1,9 @@
+# This is the file you edit to change the compile-time configuration
+# e.g. database type
+
+# -------------
+# Database type
+# -------------
+
+-dPOSTGRES
+# -dSQLITE

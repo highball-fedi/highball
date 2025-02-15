@@ -1,4 +1,4 @@
 #!/bin/sh
 SOURCE=`ls -d ./src/*.pp`
 echo "./highball$EXEC: `echo $SOURCE | sed 's/\.\/src\//\.\.\/src\//g'`"
-echo "	$PC -Fl../lib -Mobjfpc -Sh $FPARGS -FE. ../src/highball.pp"
+echo "	$PC @../config -Fl../lib -Mobjfpc -Sh $FPARGS -FE. ../src/highball.pp"
