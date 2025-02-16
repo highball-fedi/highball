@@ -1,4 +1,4 @@
-site_name: Highball
+site_name: 'Highball documentation'
 theme:
   favicon: 'assets/logo.png'
   logo: 'assets/logo.png'
