@@ -12,11 +12,12 @@ type
 		RouteRes : TResponse;
 		RouteJSON : TJSONObject;
 
-	public
 		procedure Before();
 		procedure Job(); virtual; abstract;
 		procedure After();
-		procedure Route(req: TRequest; res: TResponse);
+
+	public
+		procedure Route(Req: TRequest; Res: TResponse);
 	end;
 
 implementation
@@ -34,8 +35,7 @@ procedure TRouteBase.After();
 begin
 	try
 		RouteRes.Content := RouteJSON.AsJSON;
-		if HighballJSONEmpty(RouteRes.Content) then
-		begin
+		if HighballJSONEmpty(RouteRes.Content) and RouteRes.Code = 200 then
 			RouteJSON.Strings['error'] := 'Endpoint not found';
 			RouteRes.Content := RouteJSON.AsJSON;
 			RouteRes.Code := 404;
@@ -47,10 +47,10 @@ begin
 	end;
 end;
 
-procedure TRouteBase.Route(req: TRequest; res: TResponse);
+procedure TRouteBase.Route(Req: TRequest; Res: TResponse);
 begin
-	RouteReq := req;
-	RouteRes := res;
+	RouteReq := Req;
+	RouteRes := Res;
 	Before();
 	Job();
 	After();

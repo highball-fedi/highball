@@ -6,7 +6,7 @@ uses
 
 type
 	TRouteWellKnown = class(TRouteBase)
-	public
+	protected
 		procedure Job(); override;
 	end;
 
@@ -16,7 +16,6 @@ var
 implementation
 procedure TRouteWellKnown.Job();
 begin
-	RouteJSON.Strings['a'] := 'a';
 end;
 
 end.
