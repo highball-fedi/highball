@@ -16,7 +16,8 @@ var
 implementation
 uses
 	FPJSON,
-	HighballConfig;
+	HighballConfig,
+	HighballVersion;
 
 procedure TRouteNodeinfo.Job();
 var
@@ -28,6 +29,13 @@ begin
 		RouteJSON.Strings['version'] := EPName;
 		RouteJSON.Arrays['protocols'] := TJSONArray.Create();
 		RouteJSON.Arrays['protocols'].Add('activitypub');
+		RouteJSON.Objects['software'] := TJSONObject.Create();
+		RouteJSON.Objects['software'].Strings['name'] := 'highball';
+		RouteJSON.Objects['software'].Strings['version'] := HighballGetVersion();
+		if EPNAME = '2.1' then
+		begin
+			RouteJSON.Objects['software'].Strings['repository'] := 'https://github.com/highball-fedi/highball';
+		end;
 	end
 	else
 	begin
