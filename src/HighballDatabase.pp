@@ -8,7 +8,7 @@ uses
 	postgres;
 	{$endif}
 	{$ifdef SQLITE}
-	sqlite;
+	sqlite3;
 	{$endif}
 
 end.

@@ -5,5 +5,5 @@
 # Database type
 # -------------
 
--dPOSTGRES
-# -dSQLITE
+# -dPOSTGRES
+ -dSQLITE
