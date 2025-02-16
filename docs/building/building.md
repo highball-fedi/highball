@@ -14,5 +14,5 @@
 4. Run `make`.
 
 [^1]: Might work on [Cygwin](https://www.cygwin.com)/[MSYS2](https://www.msys2.org)/[w64devkit](https://github.com/skeeto/w64devkit).
-[^2]: There might be an another repository, but we recommend this one.
+[^2]: There might be an another repository like mirror/fork, but we recommend this one.
 [^3]: See [Adjusting compile-time config](../config).
