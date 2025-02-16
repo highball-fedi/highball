@@ -26,7 +26,7 @@ function HighballGetVersion() : String;
 begin
 	HighballGetVersion :=	  IntToStr(HighballVersionRaw.Major) + '.'
 				+ IntToStr(HighballVersionRaw.Minor) + '.'
-				+ IntToStr(HighballVersionRaw.Patch) + '.';
+				+ IntToStr(HighballVersionRaw.Patch);
 end;
 
 end.
