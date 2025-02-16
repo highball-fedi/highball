@@ -7,11 +7,12 @@ uses
 
 type
 	TRouteBase = class
-	public
+	protected
 		RouteReq : TRequest;
 		RouteRes : TResponse;
 		RouteJSON : TJSONObject;
 
+	public
 		procedure Before();
 		procedure Job(); virtual; abstract;
 		procedure After();
