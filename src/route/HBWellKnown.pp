@@ -7,7 +7,7 @@ uses
 type
 	TRouteWellKnown = class(TRouteBase)
 	public
-		procedure Job();
+		procedure Job(); override;
 	end;
 
 var

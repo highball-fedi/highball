@@ -15,6 +15,9 @@ uses
 function HighballServerStart() : Integer;
 begin
 	HighballServerStart := 0;
+
+	RouteWellKnown := TRouteWellKnown.Create();
+
 	WriteLn('Started server');
 	HTTPRouter.RegisterRoute('/.well-known', @RouteWellKnown.Route);
 	Application.Port := HighballParsedConfig.ServerPort;

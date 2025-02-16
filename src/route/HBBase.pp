@@ -13,7 +13,7 @@ type
 		RouteJSON : TJSONObject;
 
 		procedure Before();
-		procedure Job();
+		procedure Job(); virtual; abstract;
 		procedure After();
 		procedure Route(req: TRequest; res: TResponse);
 	end;
@@ -27,11 +27,6 @@ begin
 	RouteJSON := TJSONObject.Create();
 	RouteRes.Code := 200;
 	RouteRes.ContentType := 'application/json';
-end;
-
-procedure TRouteBase.Job();
-begin
-	(* This is base class; do nothing *)
 end;
 
 procedure TRouteBase.After();
