@@ -21,7 +21,7 @@ procedure TRouteDefault.Job();
 begin
 	DefaultProcess := False;
 	RouteRes.ContentType := 'text/html';
-	RouteRes.Content := 'aa';
+	RouteRes.Content := '';
 	RouteRes.ContentLength := Length(RouteRes.Content);
 end;
 
