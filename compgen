@@ -1,4 +1,4 @@
 #!/bin/sh
 SOURCE=`ls -d ./src/*.pp ./src/route/*.pp`
 echo "./highball$EXEC: `echo $SOURCE | sed 's/\.\/src\//\.\.\/src\//g'` ../HighballPathnames.pp"
-echo "	$PC @../config -Fl../lib -Mobjfpc -Sh $FPARGS -FE. -Fu../ -Fu../src -Fu../src/route ../src/highball.pp"
+echo "	$PC @../config -Fl../lib -Mobjfpc -Sh $FPARGS -FE. -Fu../ -Fu../src -Xs -O3 -Fu../src/route ../src/highball.pp"
