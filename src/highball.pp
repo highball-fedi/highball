@@ -11,7 +11,7 @@ uses
 	HighballConfig,
 	HighballDatabase;
 
-function ParseArgs : Integer;
+function ParseArgs() : Integer;
 var
 	ArgI : Integer;
 begin

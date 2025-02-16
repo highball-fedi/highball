@@ -1,7 +1,7 @@
 unit HighballServer;
 
 interface
-function HighballServerStart : Integer;
+function HighballServerStart() : Integer;
 
 implementation
 uses
@@ -12,11 +12,11 @@ uses
 	HBWellKnown,
 	Sysutils;
 
-function HighballServerStart : Integer;
+function HighballServerStart() : Integer;
 begin
 	HighballServerStart := 0;
 	WriteLn('Started server');
-	HTTPRouter.RegisterRoute('/.well-known', @RouteWellKnown);
+	HTTPRouter.RegisterRoute('/.well-known', @RouteWellKnown.Route);
 	Application.Port := HighballParsedConfig.ServerPort;
 	Application.Threaded := True;
 	Application.Initialize;
