@@ -33,7 +33,7 @@ install: all
 	echo "install: all" >> $@
 	echo "	cp ./highball$(EXEC) $(DESTDIR)$(PREFIX)/bin/" >> $@
 	echo "clean:" >> $@
-	echo "	-rm -f *" >> $@
+	echo "	-rm -f * ../HighballPathnames.pp" >> $@
 
 get-version:
 	@echo `grep '(\* MAJOR \*)' src/HighballVersion.pp | sed 's/.*Major : //g' | sed 's/;.*//g'`.`grep '(\* MINOR \*)' src/HighballVersion.pp | sed 's/.*Minor : //g' | sed 's/;.*//g'`.`grep '(\* PATCH \*)' src/HighballVersion.pp | sed 's/.*Patch : //g' | sed 's/;.*//g'` | tr -d '\\r\\n'
