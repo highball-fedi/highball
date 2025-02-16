@@ -3,5 +3,8 @@ theme:
   favicon: 'assets/logo.png'
   logo: 'assets/logo.png'
   name: 'material'
+  palette:
+    primary: 'black'
+    accent: 'light green'
 repo_name: 'highball-fedi/highball'
 repo_url: 'https://github.com/highball-fedi/highball'
