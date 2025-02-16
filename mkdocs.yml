@@ -1,1 +1,6 @@
 site_name: Highball
+theme:
+  favicon: 'assets/logo.png'
+  name: 'mateiral'
+repo_name: 'highball-fedi/highball'
+repo_url: 'https://github.com/highball-fedi/highball'
