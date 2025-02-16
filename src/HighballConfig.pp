@@ -4,13 +4,13 @@ interface
 type
 	THighballConfig = record
 		ServerPort : Integer;
-		ServerDomain : String;
+		ServerURL : String;
 	end;
 
 var
 	HighballParsedConfig : THighballConfig = (
 		ServerPort : 4000;
-		ServerDomain : '';
+		ServerURL : '';
 	);
 
 function HighballParseConfig(ConfPath : String) : Integer;
@@ -28,7 +28,7 @@ begin
 	INI := TINIFile.Create(ConfPath);
 
 	HighballParsedConfig.ServerPort := INI.ReadInteger('server', 'port', HighballParsedConfig.ServerPort);
-	HighballParsedConfig.ServerDomain := INI.ReadString('server', 'domain', HighballParsedConfig.ServerDomain);
+	HighballParsedConfig.ServerURL := INI.ReadString('server', 'url', HighballParsedConfig.ServerURL);
 
 	INI.Free();
 end;
@@ -36,9 +36,9 @@ end;
 function HighballCheckConfig() : Integer;
 begin
 	HighballCheckConfig := -1;
-	if Length(HighballParsedConfig.ServerDomain) = 0 then
+	if Length(HighballParsedConfig.ServerURL) = 0 then
 	begin
-		WriteLn(StdErr, 'ERROR! server.domain not set');
+		WriteLn(StdErr, 'ERROR! server.url not set');
 		HighballCheckConfig := 1;
 	end;
 end;

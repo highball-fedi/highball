@@ -15,7 +15,8 @@ var
 
 implementation
 uses
-	FPJSON;
+	FPJSON,
+	HighballConfig;
 
 procedure TRouteWellKnown.Job();
 var
@@ -27,6 +28,7 @@ begin
 		RouteJSON.Arrays['links'] := TJSONArray.Create();
 		RouteJSON.Arrays['links'].Add(TJSONObject.Create());
 		RouteJSON.Arrays['links'].Objects[0].Strings['rel'] := 'http://nodeinfo.diaspora.software/ns/schema/2.1';
+		RouteJSON.Arrays['links'].Objects[0].Strings['href'] := HighballParsedConfig.ServerURL + '/nodeinfo/2.1';
 	end;
 end;
 
