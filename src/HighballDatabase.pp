@@ -5,10 +5,10 @@ interface
 implementation
 uses
 	{$ifdef POSTGRES}
-	postgres;
+	Postgres;
 	{$endif}
 	{$ifdef SQLITE}
-	sqlite3;
+	SQLite3;
 	{$endif}
 
 end.

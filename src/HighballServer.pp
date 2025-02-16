@@ -5,18 +5,18 @@ function HighballServerStart : Integer;
 
 implementation
 uses
-	fphttpapp,
-	httpdefs,
-	httproute,
+	FPHTTPApp,
+	HTTPDefs,
+	HTTPRoute,
 	HighballConfig,
-	HighballRoute,
+	HBWellKnown,
 	Sysutils;
 
 function HighballServerStart : Integer;
 begin
 	HighballServerStart := 0;
 	WriteLn('Started server');
-	HTTPRouter.RegisterRoute('/.well-known', @HighballRouteWellKnown);
+	HTTPRouter.RegisterRoute('/.well-known', @RouteWellKnown);
 	Application.Port := HighballParsedConfig.ServerPort;
 	Application.Threaded := True;
 	Application.Initialize;

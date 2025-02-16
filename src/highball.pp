@@ -2,8 +2,8 @@ program highball;
 
 uses
 	{$ifdef UNIX}
-	cthreads,
-	cmem,
+	CThreads,
+	CMem,
 	{$endif}
 	HighballVersion,
 	HighballUtils,
