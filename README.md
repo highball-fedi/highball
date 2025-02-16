@@ -21,6 +21,10 @@
 
 Simply copy `config.default` to `config` and run `make` to build, then `make install` as root to install.
 
+## Running
+
+Copy `config.default.ini` to `config.ini`, and run Highball.
+
 ---
 
 TODO: write README

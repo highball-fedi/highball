@@ -21,9 +21,15 @@ install: all
 
 ./build/Makefile: Makefile compgen
 	mkdir -p ./build
+	echo "unit HighballPathnames;" > HighballPathnames.pp
+	echo "interface" >> HighballPathnames.pp
+	echo "const" >> HighballPathnames.pp
+	echo "	HBPREFIX = '$(PREFIX)';" >> HighballPathnames.pp
+	echo 'implementation' >> HighballPathnames.pp
+	echo 'end.' >> HighballPathnames.pp
 	echo ".PHONY: all install clean" > $@
 	echo "all: ./highball$(EXEC)" >> $@
-	CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" PC="$(PASC)" FPARGS="$(FPARGS)" EXEC="$(EXEC)" ./compgen >> $@
+	PREFIX="$(PREFIX)" CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" PC="$(PASC)" FPARGS="$(FPARGS)" EXEC="$(EXEC)" ./compgen >> $@
 	echo "install: all" >> $@
 	echo "	cp ./highball$(EXEC) $(DESTDIR)$(PREFIX)/bin/" >> $@
 	echo "clean:" >> $@
