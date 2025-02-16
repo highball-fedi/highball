@@ -29,6 +29,9 @@ begin
 		RouteJSON.Arrays['links'].Add(TJSONObject.Create());
 		RouteJSON.Arrays['links'].Objects[0].Strings['rel'] := 'http://nodeinfo.diaspora.software/ns/schema/2.1';
 		RouteJSON.Arrays['links'].Objects[0].Strings['href'] := HighballParsedConfig.ServerURL + '/nodeinfo/2.1';
+		RouteJSON.Arrays['links'].Add(TJSONObject.Create());
+		RouteJSON.Arrays['links'].Objects[1].Strings['rel'] := 'http://nodeinfo.diaspora.software/ns/schema/2.0';
+		RouteJSON.Arrays['links'].Objects[1].Strings['href'] := HighballParsedConfig.ServerURL + '/nodeinfo/2.0';
 	end;
 end;
 
