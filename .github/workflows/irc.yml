@@ -1,0 +1,19 @@
+name: irc
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: irc
+        uses: rectalogic/notify-irc@v1
+        with:
+          channel: "#highball"
+          server: "irc.nishi.boats"
+          nickname: "github-notify"
+          message: |
+            ${{ github.actor }} pushed ${{ github.event.ref }} ${{ github.event.compare }}
+            ${{ join(github.event.commits.*.message) }}
