@@ -3,6 +3,9 @@ theme:
   favicon: 'assets/logo.png'
   logo: 'assets/logo.png'
   name: 'material'
+  features:
+    - content.code.copy
+    - content.code.select
   palette:
     - scheme: default
       primary: 'black'
@@ -16,5 +19,16 @@ theme:
         icon: material/brightness-4
 markdown_extensions:
   - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - footnotes
 repo_name: 'highball-fedi/highball'
 repo_url: 'https://github.com/highball-fedi/highball'
