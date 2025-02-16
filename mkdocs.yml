@@ -4,7 +4,15 @@ theme:
   logo: 'assets/logo.png'
   name: 'material'
   palette:
-    primary: 'black'
-    accent: 'light green'
+    - scheme: default
+      primary: 'black'
+      accent: 'light green'
+      toggle:
+        icon: material/brightness-7
+    - scheme: slate
+      primary: 'black'
+      accent: 'light green'
+      toggle:
+        icon: material/brightness-4
 repo_name: 'highball-fedi/highball'
 repo_url: 'https://github.com/highball-fedi/highball'
