@@ -27,6 +27,9 @@ begin
 	HighballParseConfig := 0;
 	INI := TINIFile.Create(ConfPath);
 
+	INI.BoolTrueStrings := ['true','yes','1'];
+	INI.BoolFalseStrings := ['false','no','0'];
+
 	HighballParsedConfig.ServerPort := INI.ReadInteger('server', 'port', HighballParsedConfig.ServerPort);
 	HighballParsedConfig.ServerURL := INI.ReadString('server', 'url', HighballParsedConfig.ServerURL);
 
