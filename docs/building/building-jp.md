@@ -14,4 +14,4 @@
 
 [^1]: [Cygwin](https://www.cygwin.com)/[MSYS2](https://www.msys2.org)/[w64devkit](https://github.com/skeeto/w64devkit)でも動作するかもしれません。
 [^2]: ミラーやフォークがあるかもしれませんが、このリポジトリを推奨します。
-[^3]: [Adusting compile-time config](../config)を参照してください。
+[^3]: [コンパイル時の設定の調整](../config-jp)を参照してください。
