@@ -35,7 +35,8 @@ procedure TRouteBase.After();
 begin
 	try
 		RouteRes.Content := RouteJSON.AsJSON;
-		if HighballJSONEmpty(RouteRes.Content) and RouteRes.Code = 200 then
+		if HighballJSONEmpty(RouteRes.Content) and (RouteRes.Code = 200) then
+		begin
 			RouteJSON.Strings['error'] := 'Endpoint not found';
 			RouteRes.Content := RouteJSON.AsJSON;
 			RouteRes.Code := 404;
