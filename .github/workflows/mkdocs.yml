@@ -3,7 +3,10 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master 
+      - master
+concurrency:
+  group: "mkdocs"
+  cancel-in-progress: true 
 permissions:
   contents: write
 jobs:
