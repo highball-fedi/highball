@@ -14,5 +14,7 @@ theme:
       accent: 'light green'
       toggle:
         icon: material/brightness-4
+markdown_extensions:
+  - tables
 repo_name: 'highball-fedi/highball'
 repo_url: 'https://github.com/highball-fedi/highball'
