@@ -19,7 +19,7 @@
 
 ## Building and installation
 
-Simply run `make` to build, then `make install` as root to install.
+Simply copy `config.default` to `config` and run `make` to build, then `make install` as root to install.
 
 ---
 
