@@ -15,6 +15,7 @@ var
 
 implementation
 uses
+	FPJSON,
 	HighballConfig;
 
 procedure TRouteNodeinfo.Job();
@@ -25,6 +26,8 @@ begin
 	if (EPName = '2.0') or (EPName = '2.1') then
 	begin
 		RouteJSON.Strings['version'] := EPName;
+		RouteJSON.Arrays['protocols'] := TJSONArray.Create();
+		RouteJSON.Arrays['protocols'].Add('activitypub');
 	end
 	else
 	begin

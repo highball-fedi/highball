@@ -8,11 +8,11 @@ uses
 	FPHTTPApp,
 	HTTPDefs,
 	HTTPRoute,
+	Sysutils,
 	HighballConfig,
 	HBDefault,
 	HBWellKnown,
-	HBNodeinfo,
-	Sysutils;
+	HBNodeinfo;
 
 function HighballServerStart() : Integer;
 begin
