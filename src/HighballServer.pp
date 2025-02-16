@@ -19,7 +19,7 @@ begin
 	RouteWellKnown := TRouteWellKnown.Create();
 
 	WriteLn('Started server');
-	HTTPRouter.RegisterRoute('/.well-known', @RouteWellKnown.Route);
+	HTTPRouter.RegisterRoute('/.well-known/:name', @RouteWellKnown.Route);
 	Application.Port := HighballParsedConfig.ServerPort;
 	Application.Threaded := True;
 	Application.Initialize;

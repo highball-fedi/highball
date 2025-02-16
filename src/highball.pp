@@ -31,18 +31,24 @@ begin
 end;
 
 var
-	ResultParseArgs : Integer;
+	ResultFunc : Integer;
 begin
 	WriteLn('Highball - ActivityPub server in Pascal, version ' + HighballGetVersion());
 	WriteLn('Copyright (c) 2025 Nishi & Contributors');
-	ResultParseArgs := ParseArgs;
-	if not (ResultParseArgs = -1) then
+	ResultFunc := ParseArgs;
+	if not (ResultFunc = -1) then
 	begin
-		Halt(ResultParseArgs);
+		Halt(ResultFunc);
 	end;
 	WriteLn('');
 	WriteLn('Parsing config');
 	HighballParseConfig('config.ini');
+	WriteLn('Check config');
+	ResultFunc := HighballCheckConfig();
+	if not (ResultFunc = -1) then
+	begin
+		Halt(ResultFunc);
+	end;
 	WriteLn('Starting server');
 	Halt(HighballServerStart());
 end.

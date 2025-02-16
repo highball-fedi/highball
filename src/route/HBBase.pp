@@ -44,7 +44,7 @@ begin
 		RouteRes.ContentLength := Length(RouteRes.Content);
 		RouteRes.SendContent();
 	finally
-		RouteJSON.Free();
+		RouteJSON.Destroy();
 	end;
 end;
 

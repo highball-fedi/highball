@@ -12,6 +12,7 @@ var
 	);
 
 function HighballParseConfig(ConfPath : String) : Integer;
+function HighballCheckConfig() : Integer;
 
 implementation
 uses
@@ -27,6 +28,11 @@ begin
 	HighballParsedConfig.ServerPort := INI.ReadInteger('server', 'port', HighballParsedConfig.ServerPort);
 
 	INI.Free();
+end;
+
+function HighballCheckConfig() : Integer;
+begin
+	HighballCheckConfig := -1;
 end;
 
 end.
