@@ -2,6 +2,9 @@
 
 ## Quick navigation
 
+ - [Introduction to Highball](./what)
+ - [Building the source code](./building/building)
+
 ## Community channels
 
 | Name | URL                                                                                          |
