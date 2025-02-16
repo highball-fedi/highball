@@ -9,7 +9,7 @@
 ## ビルド方法
 1. [リポジトリ](https://github.com/highball-fedi/highball)[^2] をクローンします。
 2. `config.default` を `config` としてコピーします。
-3. `config` を必要に応じて編集します。[^3]
+3. `config` を必要に応じて調整します。[^3]
 4. `make` を実行します。
 
 [^1]: [Cygwin](https://www.cygwin.com)/[MSYS2](https://www.msys2.org)/[w64devkit](https://github.com/skeeto/w64devkit)でも動作するかもしれません。
