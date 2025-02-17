@@ -43,7 +43,7 @@ begin
 	end;
 	WriteLn('');
 	WriteLn('Parsing config');
-	HighballParseConfig(HBPREFIX + '/etc/config.ini');
+	HighballParseConfig(HBPREFIX + '/etc/highball.ini');
 	HighballParseConfig('config.ini');
 	WriteLn('Check config');
 	ResultFunc := HighballCheckConfig();
