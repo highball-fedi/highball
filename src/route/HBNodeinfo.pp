@@ -27,8 +27,10 @@ begin
 	if (EPName = '2.0') or (EPName = '2.1') then
 	begin
 		RouteJSON.Strings['version'] := EPName;
+
 		RouteJSON.Arrays['protocols'] := TJSONArray.Create();
 		RouteJSON.Arrays['protocols'].Add('activitypub');
+
 		RouteJSON.Objects['software'] := TJSONObject.Create();
 		RouteJSON.Objects['software'].Strings['name'] := 'highball';
 		RouteJSON.Objects['software'].Strings['version'] := HighballGetVersion();
@@ -36,6 +38,18 @@ begin
 		begin
 			RouteJSON.Objects['software'].Strings['repository'] := 'https://github.com/highball-fedi/highball';
 		end;
+
+		RouteJSON.Objects['services'] := TJSONObject.Create();
+		RouteJSON.Objects['services'].Arrays['inbound'] := TJSONArray.Create();
+		RouteJSON.Objects['services'].Arrays['outbound'] := TJSONArray.Create();
+
+		RouteJSON.Objects['metadata'] := TJSONObject.Create();
+		(* TODO: Return nodeName/nodeDescription *)
+
+		RouteJSON.Objects['usage'] := TJSONObject.Create();
+		(* TODO: Return usage.localPosts *)
+		RouteJSON.Objects['usage'].Objects['users'] := TJSONObject.Create();
+		(* TODO: Return usage.users.total *)
 	end
 	else
 	begin
