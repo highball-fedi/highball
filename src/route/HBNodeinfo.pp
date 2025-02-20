@@ -44,7 +44,8 @@ begin
 		RouteJSON.Objects['services'].Arrays['outbound'] := TJSONArray.Create();
 
 		RouteJSON.Objects['metadata'] := TJSONObject.Create();
-		(* TODO: Return nodeName/nodeDescription *)
+		RouteJSON.Objects['metadata'].Strings['nodeName'] := HighballParsedConfig.ServerName;
+		RouteJSON.Objects['metadata'].Strings['nodeDescription'] := HighballParsedConfig.ServerDescription;
 
 		RouteJSON.Objects['usage'] := TJSONObject.Create();
 		(* TODO: Return usage.localPosts *)
