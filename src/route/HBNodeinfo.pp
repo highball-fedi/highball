@@ -26,6 +26,8 @@ begin
 	EPName := RouteReq.RouteParams['name'];
 	if (EPName = '2.0') or (EPName = '2.1') then
 	begin
+		RouteJSON.Booleans['openRegistrations'] := HighballParsedConfig.UserAllowRegister;
+
 		RouteJSON.Strings['version'] := EPName;
 
 		RouteJSON.Arrays['protocols'] := TJSONArray.Create();

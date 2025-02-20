@@ -7,14 +7,16 @@ type
 		ServerURL : String;
 		ServerName : String;
 		ServerDescription : String;
+		UserAllowRegister : Boolean;
 	end;
 
 var
 	HighballParsedConfig : THighballConfig = (
-		ServerPort : 4000;
+		ServerPort : -1;
 		ServerURL : '';
 		ServerName : '';
 		ServerDescription : '';
+		UserAllowRegister : False;
 	);
 
 function HighballParseConfig(ConfPath : String) : Integer;
@@ -38,6 +40,7 @@ begin
 	HighballParsedConfig.ServerName := INI.ReadString('server', 'name', HighballParsedConfig.ServerName);
 	HighballParsedConfig.ServerDescription := INI.ReadString('server', 'description', HighballParsedConfig.ServerDescription);
 	HighballParsedConfig.ServerURL := INI.ReadString('server', 'url', HighballParsedConfig.ServerURL);
+	HighballParsedConfig.UserAllowRegister := INI.ReadBool('user', 'allow-register', HighballParsedConfig.UserAllowRegister);
 
 	INI.Free();
 end;
@@ -45,6 +48,11 @@ end;
 function HighballCheckConfig() : Integer;
 begin
 	HighballCheckConfig := -1;
+	if HighballParsedConfig.ServerPort = -1 then
+	begin
+		WriteLn(StdErr, 'ERROR! server.port not set');
+		HighballCheckConfig := 1;
+	end;
 	if Length(HighballParsedConfig.ServerURL) = 0 then
 	begin
 		WriteLn(StdErr, 'ERROR! server.url not set');
