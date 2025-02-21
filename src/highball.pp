@@ -1,3 +1,6 @@
+{$ifdef MSWINDOWS}
+{$apptype console}
+{$endif}
 program highball;
 
 uses
@@ -51,6 +54,8 @@ begin
 	begin
 		Halt(ResultFunc);
 	end;
+	WriteLn('Initializing database');
+	HighballDatabaseInit();
 	WriteLn('Starting server');
 	Halt(HighballServerStart());
 end.
