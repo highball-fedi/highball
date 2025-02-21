@@ -6,7 +6,7 @@ uses
 	Postgres,
 	PQConnection;
 	{$elseif defined(SQLITE)}
-	SQLite3,
+	SQLite3dyn,
 	SQLite3Conn;
 	{$endif}
 
