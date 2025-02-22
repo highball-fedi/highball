@@ -5,6 +5,13 @@
  - [Introduction to Highball](./what)
  - [Building the source code](./building/building)
 
+## Japanese
+
+日本語ドキュメントもあります。
+
+ - [Highball入門](./what-jp)
+ - [ソースコードをビルドする](./building/building-jp)
+
 ## Community channels
 
 | Name | URL                                                                                          |
