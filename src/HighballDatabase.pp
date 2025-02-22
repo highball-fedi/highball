@@ -44,7 +44,7 @@ begin
 	DBConn.DatabaseName := HighballParsedConfig.DatabasePath;
 	{$endif}
 	DBConn.Open();
-	DBConn.ExecuteDirect('CREATE TABLE IF NOT EXISTS users(name text)');
+	DBConn.ExecuteDirect('CREATE TABLE IF NOT EXISTS users(username text, password text, created_at bigint, updated_at bigint, admin boolean)');
 	DBTrans.Commit();
 	DBTrans.Free();
 	DBConn.Free();
