@@ -51,6 +51,11 @@ begin
 	HighballParsedConfig.ServerDescription := INI.ReadString('server', 'description', HighballParsedConfig.ServerDescription);
 	HighballParsedConfig.ServerURL := INI.ReadString('server', 'url', HighballParsedConfig.ServerURL);
 	HighballParsedConfig.UserAllowRegister := INI.ReadBool('user', 'allow-register', HighballParsedConfig.UserAllowRegister);
+	HighballParsedConfig.DatabasePath := INI.ReadString('database', 'path', HighballParsedConfig.DatabasePath);
+	HighballParsedConfig.DatabaseHostname := INI.ReadString('database', 'hostname', HighballParsedConfig.DatabaseHostname);
+	HighballParsedConfig.DatabaseUsername := INI.ReadString('database', 'username', HighballParsedConfig.DatabaseUsername);
+	HighballParsedConfig.DatabasePassword := INI.ReadString('database', 'password', HighballParsedConfig.DatabasePassword);
+	HighballParsedConfig.DatabaseDatabase := INI.ReadString('database', 'database', HighballParsedConfig.DatabaseDatabase);
 
 	INI.Free();
 end;
@@ -78,6 +83,34 @@ begin
 		WriteLn(StdErr, 'ERROR! server.description not set');
 		HighballCheckConfig := 1;
 	end;
+{$if defined(SQLITE)}
+	if Length(HighballParsedConfig.DatabasePath) = 0 then
+	begin
+		WriteLn(StdErr, 'ERROR! database.path not set');
+		HighballCheckConfig := 1;
+	end;
+{$elseif defined(POSTGRES)}
+	if Length(HighballParsedConfig.DatabaseHostname) = 0 then
+	begin
+		WriteLn(StdErr, 'ERROR! database.hostname not set');
+		HighballCheckConfig := 1;
+	end;
+	if Length(HighballParsedConfig.DatabaseUsername) = 0 then
+	begin
+		WriteLn(StdErr, 'ERROR! database.username not set');
+		HighballCheckConfig := 1;
+	end;
+	if Length(HighballParsedConfig.DatabasePassword) = 0 then
+	begin
+		WriteLn(StdErr, 'ERROR! database.password not set');
+		HighballCheckConfig := 1;
+	end;
+	if Length(HighballParsedConfig.DatabaseDatabase) = 0 then
+	begin
+		WriteLn(StdErr, 'ERROR! database.database not set');
+		HighballCheckConfig := 1;
+	end;
+{$endif}
 end;
 
 end.

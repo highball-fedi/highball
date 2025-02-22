@@ -13,7 +13,7 @@ uses
 
 type
 	{$if defined(POSTGRES)}
-	TSQLite3Connection = TPQConnection;
+	THighballDBConnection = TPQConnection;
 	{$elseif defined(SQLITE)}
 	THighballDBConnection = TSQLite3Connection;
 	{$endif}
@@ -22,7 +22,8 @@ procedure HighballDatabaseInit();
 
 implementation
 uses
-	SQLDB;
+	SQLDB,
+	HighballConfig;
 
 procedure HighballDatabaseInit();
 var
@@ -33,11 +34,14 @@ begin
 	DBTrans := TSQLTransaction.Create(nil);
 	DBConn.Transaction := DBTrans;
 	DBTrans.Database := DBConn;
-	{$if defined(POSTGRES)}
-	{$elseif defined(SQLITE)}
-	DBConn.DatabaseName := 'a';
-	DBConn.HostName := 'localhost';
 	DBConn.CharSet := 'UTF8';
+	{$if defined(POSTGRES)}
+	DBConn.DatabaseName := HighballParsedConfig.DatabaseDatabase;
+	DBConn.Username := HighballParsedConfig.DatabaseUsername;
+	DBConn.Password := HighballParsedConfig.DatabasePassword;
+	DBConn.Hostname := HighballParsedConfig.DatabaseHostname;
+	{$elseif defined(SQLITE)}
+	DBConn.DatabaseName := HighballParsedConfig.DatabasePath;
 	{$endif}
 	DBConn.Open();
 	DBConn.ExecuteDirect('CREATE TABLE IF NOT EXISTS users(name text)');
