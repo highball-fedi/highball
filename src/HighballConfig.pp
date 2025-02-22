@@ -8,6 +8,11 @@ type
 		ServerName : String;
 		ServerDescription : String;
 		UserAllowRegister : Boolean;
+		DatabasePath : String;
+		DatabaseHostname : String;
+		DatabaseUsername : String;
+		DatabasePassword : String;
+		DatabaseDatabase : String;
 	end;
 
 var
@@ -17,6 +22,11 @@ var
 		ServerName : '';
 		ServerDescription : '';
 		UserAllowRegister : False;
+		DatabasePath : '';
+		DatabaseHostname : '';
+		DatabaseUsername : '';
+		DatabasePassword : '';
+		DatabaseDatabase : '';
 	);
 
 function HighballParseConfig(ConfPath : String) : Integer;
