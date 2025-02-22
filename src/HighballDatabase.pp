@@ -40,8 +40,8 @@ begin
 	DBConn.CharSet := 'UTF8';
 	{$endif}
 	DBConn.Open();
-	//DBConn.ExecuteDirect('CREATE TABLE IF NOT EXISTS users(name text)');
-	//DBTrans.Commit();
+	DBConn.ExecuteDirect('CREATE TABLE IF NOT EXISTS users(name text)');
+	DBTrans.Commit();
 	DBTrans.Free();
 	DBConn.Free();
 end;
