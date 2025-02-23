@@ -63,6 +63,10 @@ Initializing routing rules and registering them should be done in [./src/Highbal
 
 They should be always `Name: Type`.
 
+## Class
+
+Fields should be declared before methods.
+
 ## Procedure/Function
 
 Always put `(` and `)`, even if they don't take any arguments.

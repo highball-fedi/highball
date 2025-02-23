@@ -21,11 +21,15 @@ type
 	protected
 		Connection: THighballDBConnection;
 		Transaction: TSQLTransaction;
+		DidRun: Boolean;
 
 	public
+		Query: TSQLQuery;
+
 		constructor Create();
 		destructor Destroy(); override;
-		procedure ExecuteDirect(Query: String);
+		procedure Execute(ExecQuery: String);
+		procedure Run(RunQuery: String);
 	end;
 	THighballDBPointer = ^THighballDB;
 
@@ -37,9 +41,13 @@ constructor THighballDB.Create();
 begin
 	Connection := THighballDBConnection.Create(nil);
 	Transaction := TSQLTransaction.Create(nil);
+	Query := TSQLQuery.Create(nil);
 	Connection.Transaction := Transaction;
 	Transaction.Database := Connection;
+	Query.Database := Connection;
+	Query.Transaction := Transaction;
 	Connection.CharSet := 'UTF8';
+	DidRun := False;
 
 {$if defined(POSTGRES)}
 	Connection.DatabaseName := HighballParsedConfig.DatabaseDatabase;
@@ -55,15 +63,31 @@ end;
 
 destructor THighballDB.Destroy();
 begin
+	if DidRun then
+	begin
+		Query.Close();
+	end
+	else
+	begin
+		Query.ExecSQL();
+		Transaction.Commit();
+	end;
 	Transaction.Free();
 	Connection.Free();
+	Query.Free();
 	inherited;
 end;
 
-procedure THighballDB.ExecuteDirect(Query: String);
+procedure THighballDB.Execute(ExecQuery: String);
 begin
-	Connection.ExecuteDirect(Query);
-	Transaction.Commit();
+	Query.SQL.Text := ExecQuery;
+end;
+
+procedure THighballDB.Run(RunQuery: String);
+begin
+	DidRun := True;
+	Query.SQL.Text := RunQuery;
+	Query.Open;
 end;
 
 end.
