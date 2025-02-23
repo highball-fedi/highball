@@ -101,5 +101,3 @@ end;
 
 end.
 ```
-
-TODO: write more
