@@ -11,7 +11,6 @@ uses
 	SQLite3Conn;
 {$endif}
 
-
 type
 {$if defined(POSTGRES)}
 	THighballDBConnection = TPQConnection;
