@@ -2,6 +2,7 @@ unit HighballDatabase;
 
 interface
 uses
+	SQLDB,
 	{$if defined(POSTGRES)}
 	Postgres,
 	PQConnection;
@@ -17,37 +18,62 @@ type
 	{$elseif defined(SQLITE)}
 	THighballDBConnection = TSQLite3Connection;
 	{$endif}
+	THighballDB = class
+	protected
+		Connection : THighballDBConnection;
+		Transaction : TSQLTransaction;
+
+	public
+		constructor Create();
+		destructor Destroy(); override;
+		procedure ExecuteDirect(Query : String);
+	end;
+	THighballDBPointer = ^THighballDB;
 
 procedure HighballDatabaseInit();
 
 implementation
 uses
-	SQLDB,
 	HighballConfig;
+
+constructor THighballDB.Create();
+begin
+	Connection := THighballDBConnection.Create(nil);
+	Transaction := TSQLTransaction.Create(nil);
+	Connection.Transaction := Transaction;
+	Transaction.Database := Connection;
+	Connection.CharSet := 'UTF8';
+	{$if defined(POSTGRES)}
+	Connection.DatabaseName := HighballParsedConfig.DatabaseDatabase;
+	Connection.Username := HighballParsedConfig.DatabaseUsername;
+	Connection.Password := HighballParsedConfig.DatabasePassword;
+	Connection.Hostname := HighballParsedConfig.DatabaseHostname;
+	{$elseif defined(SQLITE)}
+	Connection.DatabaseName := HighballParsedConfig.DatabasePath;
+	{$endif}
+	Connection.Open();
+end;
+
+destructor THighballDB.Destroy();
+begin
+	Transaction.Free();
+	Connection.Free();
+	inherited;
+end;
+
+procedure THighballDB.ExecuteDirect(Query : String);
+begin
+	Connection.ExecuteDirect(Query);
+	Transaction.Commit();
+end;
 
 procedure HighballDatabaseInit();
 var
-	DBConn : THighballDBConnection;
-	DBTrans : TSQLTransaction;
+	DB : THighballDB;
 begin
-	DBConn := THighballDBConnection.Create(nil);
-	DBTrans := TSQLTransaction.Create(nil);
-	DBConn.Transaction := DBTrans;
-	DBTrans.Database := DBConn;
-	DBConn.CharSet := 'UTF8';
-	{$if defined(POSTGRES)}
-	DBConn.DatabaseName := HighballParsedConfig.DatabaseDatabase;
-	DBConn.Username := HighballParsedConfig.DatabaseUsername;
-	DBConn.Password := HighballParsedConfig.DatabasePassword;
-	DBConn.Hostname := HighballParsedConfig.DatabaseHostname;
-	{$elseif defined(SQLITE)}
-	DBConn.DatabaseName := HighballParsedConfig.DatabasePath;
-	{$endif}
-	DBConn.Open();
-	DBConn.ExecuteDirect('CREATE TABLE IF NOT EXISTS users(username text, password text, created_at bigint, updated_at bigint, admin boolean)');
-	DBTrans.Commit();
-	DBTrans.Free();
-	DBConn.Free();
+	DB := THighballDB.Create();
+	DB.ExecuteDirect('CREATE TABLE IF NOT EXISTS users(username text, password text, created_at bigint, updated_at bigint, admin boolean)');
+	DB.Free();
 end;
 
 end.
