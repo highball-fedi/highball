@@ -50,9 +50,9 @@ begin
 		RouteJSON.Objects['metadata'].Strings['nodeDescription'] := HighballParsedConfig.ServerDescription;
 
 		RouteJSON.Objects['usage'] := TJSONObject.Create();
-		(* TODO: Return usage.localPosts *)
+		// TODO: Return usage.localPosts
 		RouteJSON.Objects['usage'].Objects['users'] := TJSONObject.Create();
-		(* TODO: Return usage.users.total *)
+		// TODO: Return usage.users.total
 	end
 	else
 	begin

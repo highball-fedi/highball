@@ -11,11 +11,11 @@ type
 		RouteReq: TRequest;
 		RouteRes: TResponse;
 		RouteJSON: TJSONObject;
-		DefaultProcess: Boolean;
+		DefaultProcess: Boolean;		// True by default
 
-		procedure Before();
-		procedure Job(); virtual; abstract;
-		procedure After();
+		procedure Before();			// Gets run before the Job()
+		procedure Job(); virtual; abstract;	// Override and do the thing
+		procedure After();			// If DefaultProcess is True, sends JSON. Otherwise, do nothing
 
 	public
 		procedure Route(Req: TRequest; Res: TResponse);
@@ -50,7 +50,7 @@ begin
 		end;
 		RouteRes.SendContent();
 	finally
-		RouteJSON.Destroy();
+		RouteJSON.Free();
 	end;
 end;
 
