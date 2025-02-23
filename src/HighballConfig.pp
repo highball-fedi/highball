@@ -83,6 +83,7 @@ begin
 		WriteLn(StdErr, 'ERROR! server.description not set');
 		HighballCheckConfig := 1;
 	end;
+
 {$if defined(SQLITE)}
 	if Length(HighballParsedConfig.DatabasePath) = 0 then
 	begin
