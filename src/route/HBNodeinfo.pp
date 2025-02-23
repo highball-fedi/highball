@@ -2,7 +2,7 @@ unit HBNodeinfo;
 
 interface
 uses
-	HBBase;
+	HBRoute;
 
 type
 	TRouteNodeinfo = class(TRouteBase)

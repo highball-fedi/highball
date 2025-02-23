@@ -2,7 +2,7 @@ unit HBWellKnown;
 
 interface
 uses
-	HBBase;
+	HBRoute;
 
 type
 	TRouteWellKnown = class(TRouteBase)

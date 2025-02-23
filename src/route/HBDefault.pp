@@ -2,7 +2,7 @@ unit HBDefault;
 
 interface
 uses
-	HBBase;
+	HBRoute;
 
 type
 	TRouteDefault = class(TRouteBase)
