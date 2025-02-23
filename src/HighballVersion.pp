@@ -3,26 +3,26 @@ unit HighballVersion;
 interface
 type
 	THighballVersion = record
-		Major : Integer;
-		Minor : Integer;
-		Patch : Integer;
+		Major: Integer;
+		Minor: Integer;
+		Patch: Integer;
 	end;
 
 const
-	HighballVersionRaw : THighballVersion = (
+	HighballVersionRaw: THighballVersion = (
 		(* DO NOT REMOVE COMMENTS!! - THEY ARE USED INTERNALLY *)
 		Major : 0; (* MAJOR *)
 		Minor : 0; (* MINOR *)
 		Patch : 0; (* PATCH *)
 	);
 
-function HighballGetVersion() : String;
+function HighballGetVersion(): String;
 
 implementation
 uses
 	Sysutils;
 
-function HighballGetVersion() : String;
+function HighballGetVersion(): String;
 begin
 	HighballGetVersion :=	  IntToStr(HighballVersionRaw.Major) + '.'
 				+ IntToStr(HighballVersionRaw.Minor) + '.'

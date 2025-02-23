@@ -8,10 +8,10 @@ uses
 type
 	TRouteBase = class
 	protected
-		RouteReq : TRequest;
-		RouteRes : TResponse;
-		RouteJSON : TJSONObject;
-		DefaultProcess : Boolean;
+		RouteReq: TRequest;
+		RouteRes: TResponse;
+		RouteJSON: TJSONObject;
+		DefaultProcess: Boolean;
 
 		procedure Before();
 		procedure Job(); virtual; abstract;

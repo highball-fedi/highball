@@ -20,13 +20,13 @@ type
 	{$endif}
 	THighballDB = class
 	protected
-		Connection : THighballDBConnection;
-		Transaction : TSQLTransaction;
+		Connection: THighballDBConnection;
+		Transaction: TSQLTransaction;
 
 	public
 		constructor Create();
 		destructor Destroy(); override;
-		procedure ExecuteDirect(Query : String);
+		procedure ExecuteDirect(Query: String);
 	end;
 	THighballDBPointer = ^THighballDB;
 
@@ -59,7 +59,7 @@ begin
 	inherited;
 end;
 
-procedure THighballDB.ExecuteDirect(Query : String);
+procedure THighballDB.ExecuteDirect(Query: String);
 begin
 	Connection.ExecuteDirect(Query);
 	Transaction.Commit();

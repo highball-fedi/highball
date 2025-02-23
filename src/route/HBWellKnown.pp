@@ -11,7 +11,7 @@ type
 	end;
 
 var
-	RouteWellKnown : TRouteWellKnown;
+	RouteWellKnown: TRouteWellKnown;
 
 implementation
 uses
@@ -20,7 +20,7 @@ uses
 
 procedure TRouteWellKnown.Job();
 var
-	EPName : String;
+	EPName: String;
 begin
 	EPName := RouteReq.RouteParams['name'];
 	if EPName = 'nodeinfo' then

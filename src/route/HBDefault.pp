@@ -11,7 +11,7 @@ type
 	end;
 
 var
-	RouteDefault : TRouteDefault;
+	RouteDefault: TRouteDefault;
 
 implementation
 uses

@@ -3,42 +3,42 @@ unit HighballConfig;
 interface
 type
 	THighballConfig = record
-		ServerPort : Integer;
-		ServerURL : String;
-		ServerName : String;
-		ServerDescription : String;
-		UserAllowRegister : Boolean;
-		DatabasePath : String;
-		DatabaseHostname : String;
-		DatabaseUsername : String;
-		DatabasePassword : String;
-		DatabaseDatabase : String;
+		ServerPort: Integer;
+		ServerURL: String;
+		ServerName: String;
+		ServerDescription: String;
+		UserAllowRegister: Boolean;
+		DatabasePath: String;
+		DatabaseHostname: String;
+		DatabaseUsername: String;
+		DatabasePassword: String;
+		DatabaseDatabase: String;
 	end;
 
 var
-	HighballParsedConfig : THighballConfig = (
-		ServerPort : -1;
-		ServerURL : '';
-		ServerName : '';
-		ServerDescription : '';
-		UserAllowRegister : False;
-		DatabasePath : '';
-		DatabaseHostname : '';
-		DatabaseUsername : '';
-		DatabasePassword : '';
-		DatabaseDatabase : '';
+	HighballParsedConfig: THighballConfig = (
+		ServerPort: -1;
+		ServerURL: '';
+		ServerName: '';
+		ServerDescription: '';
+		UserAllowRegister: False;
+		DatabasePath: '';
+		DatabaseHostname: '';
+		DatabaseUsername: '';
+		DatabasePassword: '';
+		DatabaseDatabase: '';
 	);
 
-function HighballParseConfig(ConfPath : String) : Integer;
-function HighballCheckConfig() : Integer;
+function HighballParseConfig(ConfPath: String): Integer;
+function HighballCheckConfig(): Integer;
 
 implementation
 uses
 	IniFiles;
 
-function HighballParseConfig(ConfPath : String) : Integer;
+function HighballParseConfig(ConfPath: String): Integer;
 var
-	INI : TINIFile;
+	INI: TINIFile;
 begin
 	HighballParseConfig := 0;
 	INI := TINIFile.Create(ConfPath);
@@ -60,7 +60,7 @@ begin
 	INI.Free();
 end;
 
-function HighballCheckConfig() : Integer;
+function HighballCheckConfig(): Integer;
 begin
 	HighballCheckConfig := -1;
 	if HighballParsedConfig.ServerPort = -1 then

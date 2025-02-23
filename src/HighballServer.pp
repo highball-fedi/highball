@@ -1,7 +1,7 @@
 unit HighballServer;
 
 interface
-function HighballServerStart() : Integer;
+function HighballServerStart(): Integer;
 
 implementation
 uses
@@ -14,7 +14,7 @@ uses
 	HBWellKnown,
 	HBNodeinfo;
 
-function HighballServerStart() : Integer;
+function HighballServerStart(): Integer;
 begin
 	HighballServerStart := 0;
 

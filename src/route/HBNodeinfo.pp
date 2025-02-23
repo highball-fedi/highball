@@ -11,7 +11,7 @@ type
 	end;
 
 var
-	RouteNodeinfo : TRouteNodeinfo;
+	RouteNodeinfo: TRouteNodeinfo;
 
 implementation
 uses
@@ -21,7 +21,7 @@ uses
 
 procedure TRouteNodeinfo.Job();
 var
-	EPName : String;
+	EPName: String;
 begin
 	EPName := RouteReq.RouteParams['name'];
 	if (EPName = '2.0') or (EPName = '2.1') then
