@@ -17,11 +17,13 @@ implementation
 uses
 	FPJSON,
 	HighballConfig,
-	HighballVersion;
+	HighballVersion,
+	HBDatabase;
 
 procedure TRouteNodeinfo.Job();
 var
 	EPName: String;
+	DB: THighballDB;
 begin
 	EPName := RouteReq.RouteParams['name'];
 	if (EPName = '2.0') or (EPName = '2.1') then
@@ -51,8 +53,12 @@ begin
 
 		RouteJSON.Objects['usage'] := TJSONObject.Create();
 		// TODO: Return usage.localPosts
+
 		RouteJSON.Objects['usage'].Objects['users'] := TJSONObject.Create();
-		// TODO: Return usage.users.total
+		DB := THighballDB.Create();
+		DB.Run('SELECT * FROM users');
+		RouteJSON.Objects['usage'].Objects['users'].Integers['total'] := DB.Query.RecordCount;
+		DB.Free();
 	end
 	else
 	begin

@@ -72,9 +72,9 @@ begin
 		Query.ExecSQL();
 		Transaction.Commit();
 	end;
+	Query.Free();
 	Transaction.Free();
 	Connection.Free();
-	Query.Free();
 	inherited;
 end;
 
