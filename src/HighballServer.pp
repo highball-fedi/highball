@@ -12,7 +12,8 @@ uses
 	HighballConfig,
 	HBDefault,
 	HBWellKnown,
-	HBNodeinfo;
+	HBNodeinfo,
+	HBWebFinger;
 
 function HighballServerStart(): Integer;
 begin
@@ -21,9 +22,11 @@ begin
 	RouteDefault := TRouteDefault.Create();
 	RouteWellKnown := TRouteWellKnown.Create();
 	RouteNodeinfo := TRouteNodeinfo.Create();
+	RouteWebFinger := TRouteWebFinger.Create();
 
 	WriteLn('Started server');
 	HTTPRouter.RegisterRoute('/', @RouteDefault.Route, True);
+	HTTPRouter.RegisterRoute('/.well-known/webfinger', @RouteWebFinger.Route);
 	HTTPRouter.RegisterRoute('/.well-known/:name', @RouteWellKnown.Route);
 	HTTPRouter.RegisterRoute('/nodeinfo/:name', @RouteNodeinfo.Route);
 	Application.Port := HighballParsedConfig.ServerPort;
