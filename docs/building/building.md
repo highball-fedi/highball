@@ -9,7 +9,7 @@
 
 ## Building steps
 1. Clone the [repository](https://github.com/highball-fedi/highball)[^2].
-2. Copy `config.default` to `config`.
+2. Copy `./default/config` to `config`.
 3. Adjust `config` if needed[^3].
 4. Run `make`.
 

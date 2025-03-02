@@ -8,7 +8,7 @@
 
 ## ビルド方法
 1. [リポジトリ](https://github.com/highball-fedi/highball)[^2] をクローンします。
-2. `config.default` を `config` としてコピーします。
+2. `./default/config` を `config` としてコピーします。
 3. `config` を必要に応じて調整します。[^3]
 4. `make` を実行します。
 
