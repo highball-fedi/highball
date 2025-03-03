@@ -9,7 +9,7 @@ CC ?= cc
 CFLAGS ?=
 LDFLAGS ?=
 
-.PHONY: all install get-version ./build
+.PHONY: all install get-version clean ./build
 
 all: ./build
 
