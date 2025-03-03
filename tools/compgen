@@ -1,4 +1,9 @@
 #!/bin/sh
 SOURCE=`ls -d ./src/*.pp ./src/route/*.pp ./src/class/*.pp`
+cd build
+for i in `find ../src -type d`; do
+DIRS="$DIRS -Fu$i"
+done
+cd ..
 echo "./highball$EXEC: `echo $SOURCE | sed 's/\.\/src\//\.\.\/src\//g'` ../HighballPathnames.pp"
-echo "	$PC @../config -Fl../lib -Mobjfpc -Sh $FPARGS -FE. -Fu../ -Fu../src -Xs -O3 -Fu../src/route -Fu../src/class ../src/highball.pp"
+echo "	$PC @../config -Fl../lib -Mobjfpc -Sh $FPARGS -FE. -Fu../ -Xs -O3 $DIRS ../src/highball.pp"
