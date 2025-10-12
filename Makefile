@@ -1,6 +1,6 @@
 # Just some script to compile stuffs easier
 
-PASC ?= fpc
+FPC ?= fpc
 
 DESTDIR ?=
 PREFIX ?= /usr/local
@@ -29,7 +29,7 @@ install: all
 	echo 'end.' >> HighballPathnames.pp
 	echo ".PHONY: all install clean" > $@
 	echo "all: ./highball$(EXEC)" >> $@
-	PREFIX="$(PREFIX)" CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" PC="$(PASC)" FPARGS="$(FPARGS)" EXEC="$(EXEC)" ./tools/compgen >> $@
+	PREFIX="$(PREFIX)" CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" FPC="$(FPC)" FPFLAGS="$(FPARGS)" EXEC="$(EXEC)" ./tools/compgen >> $@
 	echo "install: all" >> $@
 	echo "	cp ./highball$(EXEC) $(DESTDIR)$(PREFIX)/bin/" >> $@
 	echo "clean:" >> $@

@@ -6,4 +6,4 @@ DIRS="$DIRS -Fu$i"
 done
 cd ..
 echo "./highball$EXEC: `echo $SOURCE | sed 's/\.\/src\//\.\.\/src\//g'` ../HighballPathnames.pp"
-echo "	$PC @../config -Fl../lib -Mobjfpc -Sh $FPARGS -FE. -Fu../ -Xs -O3 $DIRS ../src/highball.pp"
+echo "	$FPC @../config -Fl../lib -Mobjfpc -Sh $FPFLAGS -FE. -Fu../ -Xs -O3 $DIRS ../src/highball.pp"
